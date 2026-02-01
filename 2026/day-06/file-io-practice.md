@@ -1,4 +1,4 @@
-### Practice Note: File Redirection & Reading in Linux
+# Practice Note: File Redirection & Reading in Linux
 ## Commands Run and What They Did
 touch notes.txt
 Created an empty file named notes.txt.
@@ -29,7 +29,7 @@ Displayed the first 2 lines of the file.
 tail -n 2 notes.txt
 Displayed the last 2 lines of the file.
 
-# Final File Content (notes.txt)
+### Final File Content (notes.txt)
 
 Total lines: 8
 Commands used: >, >>, tee, cat, head, tail
