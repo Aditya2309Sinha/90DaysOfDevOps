@@ -1,5 +1,9 @@
-Files & Directories Created
-Files
+🐧 Day 11 – File Ownership Challenge
+
+Mastering chown, chgrp, and recursive ownership management in Linux.
+
+📁 Files & Directories Created
+📄 Files
 
 devops-file.txt
 
@@ -17,7 +21,7 @@ bank-heist/blueprints.pdf
 
 bank-heist/escape-plan.txt
 
-Directories
+📂 Directories
 
 app-logs/
 
@@ -29,64 +33,54 @@ heist-project/plans/
 
 bank-heist/
 
-Ownership Changes
+🔄 Ownership Changes
 1️⃣ devops-file.txt
-
-Before: aditya:aditya
-
-After: berlin:aditya
-
+Before	After
+aditya:aditya	tokyo:aditya
+tokyo:aditya	berlin:aditya
 2️⃣ team-notes.txt
-
-Before: aditya:aditya
-
-After: aditya:heist-team
-
+Before	After
+aditya:aditya	aditya:heist-team
 3️⃣ project-config.yaml
-
-Before: aditya:aditya
-
-After: professor:heist-team
-
+Before	After
+aditya:aditya	professor:heist-team
 4️⃣ app-logs/
+Before	After
+aditya:aditya	berlin:heist-team
+5️⃣ heist-project/ (Recursive Change)
 
-Before: aditya:aditya
+All files and subdirectories changed using -R flag.
 
-After: berlin:heist-team
+Before	After
+aditya:aditya	professor:planners
 
-5️⃣ heist-project/ (Recursive)
+Includes:
 
-Before:
+vault/
 
-aditya:aditya (all files and subdirectories)
+vault/gold.txt
 
-After:
+plans/
 
-professor:planners (applied using -R flag)
+plans/strategy.conf
 
-6️⃣ bank-heist Files
-
-access-codes.txt: aditya:aditya → tokyo:vault-team
-
-blueprints.pdf: aditya:aditya → berlin:tech-team
-
-escape-plan.txt: aditya:aditya → nairobi:vault-team
-
-Commands Used
+6️⃣ bank-heist Directory Files
+File	Before	After
+access-codes.txt	aditya:aditya	tokyo:vault-team
+blueprints.pdf	aditya:aditya	berlin:tech-team
+escape-plan.txt	aditya:aditya	nairobi:vault-team
+💻 Commands Used
 # View ownership
 ls -l
-ls -lR heist-project/
+ls -l filename
+ls -lR directory/
 
 # Create files
-touch devops-file.txt
-touch team-notes.txt
-touch project-config.yaml
+touch filename
 
 # Create directories
-mkdir app-logs
-mkdir -p heist-project/vault
-mkdir -p heist-project/plans
-mkdir bank-heist
+mkdir directory
+mkdir -p parent/child
 
 # Create users
 sudo useradd tokyo
@@ -100,11 +94,11 @@ sudo groupadd planners
 sudo groupadd vault-team
 sudo groupadd tech-team
 
-# Change owner
+# Change owner only
 sudo chown tokyo devops-file.txt
 sudo chown berlin devops-file.txt
 
-# Change group
+# Change group only
 sudo chgrp heist-team team-notes.txt
 
 # Change owner and group together
@@ -114,7 +108,7 @@ sudo chown berlin:heist-team app-logs
 # Recursive ownership change
 sudo chown -R professor:planners heist-project/
 
-# Set specific ownership for practice challenge
+# Practice challenge ownership
 sudo chown tokyo:vault-team bank-heist/access-codes.txt
 sudo chown berlin:tech-team bank-heist/blueprints.pdf
 sudo chown nairobi:vault-team bank-heist/escape-plan.txt
